@@ -5,3 +5,6 @@ mainClassName = "MyFirstProgram"
 test{
 	useTestNG()
 }
+repositories {
+    mavenCentral()
+}
