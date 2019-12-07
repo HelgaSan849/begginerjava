@@ -36,7 +36,7 @@ public class ContactCreationTest {
   }
 
   private void gotoHomePage() {
-    dw.findElement(By.name("home")).click();
+      dw.findElement(By.linkText("home")).click();
   }
 
   private void submitNewContact() {
