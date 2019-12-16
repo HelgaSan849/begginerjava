@@ -7,24 +7,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactCreationTest {
-  private WebDriver dw;
+  private WebDriver wd;
 
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
-    dw = new FirefoxDriver();
-    dw.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    dw.get("http://localhost/group.php");
+    wd = new FirefoxDriver();
+    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    wd.get("http://localhost/group.php");
     login("admin", "secret");
   }
 
   private void login(String username, String password) {
-    dw.findElement(By.name("user")).clear();
-    dw.findElement(By.name("user")).sendKeys(username);
-    dw.findElement(By.name("pass")).click();
-    dw.findElement(By.name("pass")).clear();
-    dw.findElement(By.name("pass")).sendKeys(password);
-    dw.findElement(By.xpath("//input[@value='Login']")).click();
+    wd.findElement(By.name("user")).clear();
+    wd.findElement(By.name("user")).sendKeys(username);
+    wd.findElement(By.name("pass")).click();
+    wd.findElement(By.name("pass")).clear();
+    wd.findElement(By.name("pass")).sendKeys(password);
+    wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @Test
@@ -37,43 +37,43 @@ public class ContactCreationTest {
   }
 
   private void gotoHomePage() {
-      dw.findElement(By.linkText("home")).click();
+      wd.findElement(By.linkText("home")).click();
   }
 
   private void submitNewContact() {
-    dw.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
   private void fillContactForm(ContactData contactData) {
-    dw.findElement(By.name("firstname")).click();
-    dw.findElement(By.name("firstname")).clear();
-    dw.findElement(By.name("firstname")).sendKeys(contactData.getName());
-    dw.findElement(By.name("lastname")).click();
-    dw.findElement(By.name("lastname")).clear();
-    dw.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-    dw.findElement(By.name("title")).click();
-    dw.findElement(By.name("title")).clear();
-    dw.findElement(By.name("title")).sendKeys(contactData.getTitle());
-    dw.findElement(By.name("company")).click();
-    dw.findElement(By.name("company")).clear();
-    dw.findElement(By.name("company")).sendKeys(contactData.getCompany());
-    dw.findElement(By.name("address")).click();
-    dw.findElement(By.name("address")).clear();
-    dw.findElement(By.name("address")).sendKeys(contactData.getAddress());
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getName());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+    wd.findElement(By.name("title")).click();
+    wd.findElement(By.name("title")).clear();
+    wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
+    wd.findElement(By.name("company")).click();
+    wd.findElement(By.name("company")).clear();
+    wd.findElement(By.name("company")).sendKeys(contactData.getCompany());
+    wd.findElement(By.name("address")).click();
+    wd.findElement(By.name("address")).clear();
+    wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
   }
 
   private void gotoNewContact() {
-    dw.findElement(By.linkText("add new")).click();
+    wd.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    dw.quit();
+    wd.quit();
   }
 
   private boolean isElementPresent(By by) {
     try {
-      dw.findElement(by);
+      wd.findElement(by);
       return true;
     } catch (NoSuchElementException e) {
       return false;
@@ -82,7 +82,7 @@ public class ContactCreationTest {
 
   private boolean isAlertPresent() {
     try {
-      dw.switchTo().alert();
+      wd.switchTo().alert();
       return true;
     } catch (NoAlertPresentException e) {
       return false;
