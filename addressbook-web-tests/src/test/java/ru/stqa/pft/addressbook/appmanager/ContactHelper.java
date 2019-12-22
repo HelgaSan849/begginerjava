@@ -42,4 +42,8 @@ public class ContactHelper extends HelperBase{
     public void updateContact() {
         click(By.name("update"));
     }
+
+    public void closeAlert() {
+        wd.switchTo().alert().accept();
+    }
 }
