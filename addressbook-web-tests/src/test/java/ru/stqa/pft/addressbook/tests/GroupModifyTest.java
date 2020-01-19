@@ -13,7 +13,7 @@ public class GroupModifyTest extends TestBase {
     if (! app.getGroupHelper().isThereAGroup()) {
       app.getGroupHelper().createGroup(new GroupData("Name_test_group", "test1", "test2"));
     }
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectGroup(before - 1);
     app.getGroupHelper().clickEditGroup();
     app.getGroupHelper().fillGroupForm(new GroupData("Name_test_group_modify", "test1", "test2"));
     app.getGroupHelper().clickUpdate();
